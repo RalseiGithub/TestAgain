@@ -1,0 +1,36 @@
+copy<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    @keyframes squareAnimation {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px) translateX(-10px) scale(0);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0px) translateX(0px) scale(1);
+      }
+    }
+    
+    .animated-squares {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: #ff9900;
+      animation: squareAnimation 1s infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-squares"></div>
+  
+  <script>
+    setInterval(function() {
+      var square = document.createElement("div");
+      square.className = "animated-squares";
+      document.body.appendChild(square);
+    }, 1000);
+  </script>
+</body>
+</html>
