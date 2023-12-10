@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Display Scratch Project Comments</title>
+  <script>
+    function fetchComments() {
+      fetch('https://api.scratch.mit.edu/comments/project/938077830')
+        .then(response => response.json())
+        .then(data => displayComments(data));
+    }
+
+    function displayComments(comments) {
+      const commentsContainer = document.getElementById('comments-container');
+      
+      comments.forEach(comment => {
+        const commentElement = document.createElement('div');
+        commentElement.innerHTML = `<strong>${comment.author.username}:</strong> ${comment.content}`;
+        commentsContainer.appendChild(commentElement);
+      });
+    }
+  </script>
+</head>
+<body>
+  <h1>Scratch Project Comments</h1>
+  <div id="comments-container"></div>
+
+  <script>
+    fetchComments();
+  </script>
+</body>
+</html>
