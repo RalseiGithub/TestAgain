@@ -1,0 +1,52 @@
+your comments
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scratch Project Comments</title>
+  <style>
+    .comment {
+      background-color: #eee;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Scratch Project Comments</h1>
+  <div id="comments"></div>
+
+  <script>
+    // Function to fetch comments from the Scratch API
+    function fetchComments() {
+      const projectId = '938077830'; // Update with the desired project ID
+
+      fetch(`https://api.scratch.mit.edu/projects/${938077830}/comments`)
+        .then(response => response.json())
+        .then(data => {
+          const commentsContainer = document.getElementById('comments');
+
+          // Loop through each comment and create HTML elements to display them
+          data.forEach(comment => {
+            const commentElement = document.createElement('div');
+            commentElement.classList.add('comment');
+
+            const usernameElement = document.createElement('h3');
+            usernameElement.textContent = comment.author.username;
+
+            const contentElement = document.createElement('p');
+            contentElement.textContent = comment.content;
+
+            commentElement.appendChild(usernameElement);
+            commentElement.appendChild(contentElement);
+
+            commentsContainer.appendChild(commentElement);
+          });
+        })
+        .catch(error => console.error(error));
+    }
+
+    // Call the fetchComments function to retrieve and display comments
+    fetchComments();
+  </script>
+</body>
+</html>
