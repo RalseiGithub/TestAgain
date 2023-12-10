@@ -20,7 +20,7 @@ your comments
     function fetchComments() {
       const projectId = '938077830'; // Update with the desired project ID
 
-      fetch(`https://api.scratch.mit.edu/projects/${938077830}/comments`)
+      fetch(`https://api.scratch.mit.edu/projects/$938077830/comments`)
         .then(response => response.json())
         .then(data => {
           const commentsContainer = document.getElementById('comments');
